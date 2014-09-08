@@ -8,6 +8,7 @@ module.exports = (function() {
     "debug",
     "trace",
     "info",
+    "timing",
     "warning",
     "severe",
     "fatal"
