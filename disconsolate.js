@@ -5,8 +5,8 @@ module.exports = (function() {
 
   disconsolate.defaults = {};
   disconsolate.defaults.levels = [
-    "debug",
     "trace",
+    "debug",
     "info",
     "timing",
     "warning",
