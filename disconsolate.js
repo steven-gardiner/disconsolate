@@ -32,6 +32,27 @@ module.exports = (function() {
       self.init();
     });
 
+    self.timers = {};
+
+    self.getTimeName = function(spec) {
+      var typ = (typeof spec);
+      if (typ === 'string') {
+        return spec;
+      }
+      return spec.name;
+    };
+
+    self.eventq.on('timer_start', function(spec) {
+      var name = self.getTimerName(spec);
+      self.timers[name] = new Date();
+    });
+    self.eventq.on('timer_stop', function(spec) {
+      var name = self.getTimerName(spec);
+      var endstamp = new Date();
+      var startstamp = self.timers[name];
+      self.eventq.emit([self.eventprefix,'timing'].join(""), {text: "TIME %s: %s", subs:[name, endstamp - startstamp]});
+    });
+
     self.listeners = {};
 
     self.logEvent = function(lvl, event) {
