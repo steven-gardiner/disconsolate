@@ -34,7 +34,7 @@ module.exports = (function() {
 
     self.timers = {};
 
-    self.getTimeName = function(spec) {
+    self.getTimerName = function(spec) {
       var typ = (typeof spec);
       if (typ === 'string') {
         return spec;
